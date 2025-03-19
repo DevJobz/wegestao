@@ -12,16 +12,16 @@ const swiper = new Swiper('.swiper-container', {
 });
 
 // Ajuste dinâmico da altura do textarea
-const textarea = document.querySelector('#contato form textarea');
+const textarea = document.querySelector('#contato-form textarea');
 
 textarea.addEventListener('input', () => {
-    textarea.style.height = 'auto'; // Redefine a altura para o valor padrão
+    textarea.style.height = 'auto'; // Redefine a altura
     textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta a altura com base no conteúdo
 
     // Limita a altura máxima
     if (textarea.scrollHeight > 300) {
         textarea.style.height = '300px';
-        textarea.style.overflowY = 'auto'; // Adiciona barra de rolagem vertical
+        textarea.style.overflowY = 'auto'; // Adiciona barra de rolagem
     } else {
         textarea.style.overflowY = 'hidden'; // Remove a barra de rolagem
     }
@@ -62,9 +62,11 @@ document.querySelectorAll('nav a').forEach((anchor) => {
 });
 
 // Modal de Sucesso
-const form = document.getElementById('contato-form');
+
 const modal = document.getElementById('success-modal');
 const closeModal = document.querySelector('.close');
+
+const form = document.getElementById('contato-form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
