@@ -78,31 +78,25 @@ form.addEventListener('submit', (e) => {
     // Captura os dados do formulário
     const formData = new FormData(form);
 
-    // Envia os dados para o FormSubmit
+    // Envia os dados para o FormSubmit com modo 'no-cors'
     fetch(form.action, {
         method: 'POST',
         body: formData,
-        headers: {
-            Accept: 'application/json',
-        },
+        mode: 'no-cors', // Modo 'no-cors'
     })
-        .then((response) => {
-            if (response.ok) {
-                // Exibe o modal de sucesso
-                modal.style.display = 'flex';
+        .then(() => {
+            // Exibe o modal de sucesso
+            modal.style.display = 'flex';
 
-                // Limpa os campos do formulário
-                form.reset();
+            // Limpa os campos do formulário
+            form.reset();
 
-                // Fecha o modal após 4 segundos
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 4000);
-            } else {
-                alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.');
-            }
+            // Fecha o modal após 4 segundos
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 4000);
         })
-        .catch((error) => {
+        .catch(() => {
             alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.');
         });
 });
